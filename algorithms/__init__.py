@@ -8,6 +8,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 from sklearn.metrics import classification_report, confusion_matrix
+from algorithms.misc import adjusted_box_plot, box_plot, sigma, mad
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn import preprocessing
+
 
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
@@ -36,13 +41,39 @@ class MLAlgorithms(object):
         """
 
         self.data = pd.read_csv(data_path, delimiter=";", decimal=",")
-        self.X = self.data.iloc[:, 1:3].values
-        self.y = self.data.iloc[:, 8].values
+        self.preprocess()
+        self.data.to_csv("res.csv")
+        self.X = self.data[["duration", "air_dist", "air_speed", "road_dist", "road_speed"]].values
+        self.scaleX()
+        self.y = self.data["mode"].values
         self.classifier = 0
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X,
-                                                                                self.y,
-                                                                                test_size=0.3,
-                                                                                random_state=1)
+        (self.X_train,
+         self.X_test,
+         self.y_train,
+         self.y_test) = train_test_split(self.X, self.y, test_size=0.3, random_state=1)
+
+    def scaleX(self):
+        """
+        Scales values in range [0, 1] column-by-column
+        :return:
+        """
+        self.X -= self.X.min()
+        self.X /= self.X.max()
+
+    def preprocess(self):
+        # print(box_plot(self.data['duration'].values))
+        # print(sigma(self.data['duration'].values, 3))
+        # print(mad(self.data['duration'].values, 3))
+        # print(adjusted_box_plot(self.data['duration'].values))
+        # Results of the adjusted_box_plot show that every duration larger than 9000 is an outlier
+
+        self.data = self.data[
+            (self.data['duration'] < 9000) &
+            (self.data['mode'] != 'cycling')
+        ].reset_index(drop=True)
+
+        # sns.pairplot(self.data[["duration", "air_dist", "air_speed", "road_dist", "road_speed", "mode"]], hue="mode")
+        # plt.show()
 
     def decision_tree(self):
         self.classifier = DecisionTreeClassifier()
