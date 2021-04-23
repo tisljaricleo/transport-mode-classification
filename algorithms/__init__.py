@@ -42,7 +42,7 @@ class MLAlgorithms(object):
 
         self.data = pd.read_csv(data_path, delimiter=";", decimal=",")
         self.preprocess()
-        self.data.to_csv("res.csv")
+        # self.data.to_csv("res.csv")
         self.X = self.data[["duration", "air_dist", "air_speed", "road_dist", "road_speed"]].values
         self.scaleX()
         self.y = self.data["mode"].values
