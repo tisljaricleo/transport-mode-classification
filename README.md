@@ -3,7 +3,7 @@ Machine learning algorithms for classification of the transport modes using data
 
 ## Instalation
 It is always recommended to use virtual environments and install packages from `requirements.txt`.  
-But, you can go ahead with `python -m pip install numpy pandas matplotlib sklearn` if you want.  
+But, you can go ahead with `python -m pip install numpy pandas matplotlib sklearn robustats seaborn` if you want.  
 
 ## Data availability
 Data is not provided publicaly by default, but you can contact me with a request for data usage.

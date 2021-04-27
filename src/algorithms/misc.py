@@ -4,6 +4,11 @@ from robustats import medcouple
 
 
 def box_plot(numbers):
+    """
+    Implementation of the Boxplot anomaly detection
+    :param numbers: List of numbers for anomaly detection
+    :return: List of anomalies
+    """
     numbers = sorted(numbers)
     q1 = np.percentile(numbers, 25)
     q3 = np.percentile(numbers, 75)
@@ -15,6 +20,12 @@ def box_plot(numbers):
 
 
 def sigma(numbers, t):
+    """
+    Implementation of the Sigma anomaly detection
+    :param numbers: List of numbers for anomaly detection
+    :param t: Number of sigmas (ex. t=3 Three sigma rule)
+    :return: List of anomalies
+    """
     numbers = sorted(numbers)
     avg = np.mean(numbers)
     std = np.std(numbers)
@@ -25,6 +36,12 @@ def sigma(numbers, t):
 
 
 def mad(numbers, t):
+    """
+    Implementation of the MAD anomaly detection
+    :param numbers: List of numbers for anomaly detection
+    :param t:
+    :return: List of anomalies
+    """
     numbers = sorted(numbers)
     median = np.median(numbers)
     diff = [abs(x - median) for x in numbers]
@@ -37,6 +54,11 @@ def mad(numbers, t):
 
 
 def adjusted_box_plot(numbers):
+    """
+    Implementation of the adjusted box plot anomaly detection
+    :param numbers: List of numbers for anomaly detection
+    :return: List of anomalies
+    """
     numbers = sorted(numbers)
     q1 = np.percentile(numbers, 25)
     q3 = np.percentile(numbers, 75)

@@ -1,20 +1,23 @@
-import os
 from algorithms import MLAlgorithms
 from algorithms import MLResults as mr
+import pandas as pd
 
 
-base_path = os.path.dirname(os.path.abspath(__file__))
-data_path = base_path + r"\data\cellular_data.csv"
+data_path = r"..\data\cellular_data.csv"
+data = pd.read_csv(data_path, delimiter=";", decimal=",")
+print("Data successfully uploaded")
 
-algorithm = MLAlgorithms(data_path)
+print("Algorithms initialized started")
+algorithm = MLAlgorithms(data)
+print("Success")
 
+print("Algorithms training started (cca. 5min)")
 knn_result = algorithm.k_nearest_neighbors(n_neighbors=4)
 decision_tree_result = algorithm.decision_tree()
 logistic_regression_result = algorithm.logistic_regression()
 naive_bayes_result = algorithm.naive_bayes()
 random_forest_result = algorithm.random_forest(n_estimators=100)
-# support_vector_machines_results = algorithm.support_vector_machines(kernel='linear')
-
+print("Success")
 
 print("#####################################################")
 print("KNN results")
@@ -50,13 +53,3 @@ print("#####################################################")
 mr.get_accuracy(algorithm.y_test, random_forest_result, verbose=True)
 mr.get_class_report(algorithm.y_test, random_forest_result, verbose=True)
 mr.get_confusion_matrix(algorithm.y_test, random_forest_result, verbose=True)
-
-# print("#####################################################")
-# print("support_vector_machines results")
-# print("#####################################################")
-# mr.get_accuracy(algorithm.y_test, support_vector_machines_results, verbose=True)
-# mr.get_class_report(algorithm.y_test, support_vector_machines_results, verbose=True)
-# mr.get_confusion_matrix(algorithm.y_test, support_vector_machines_results, verbose=True)
-
-
-print()
