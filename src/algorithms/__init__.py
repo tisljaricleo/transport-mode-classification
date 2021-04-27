@@ -72,8 +72,10 @@ class MLAlgorithms(object):
             (self.data['mode'] != 'cycling')
         ].reset_index(drop=True)
 
-        # sns.pairplot(self.data[["duration", "air_dist", "air_speed", "road_dist", "road_speed", "mode"]], hue="mode")
-        # plt.show()
+        sns.pairplot(self.data[["duration", "air_dist", "air_speed", "road_dist", "road_speed", "mode"]], hue="mode")
+        plt.show()
+
+        print()
 
     def decision_tree(self):
         self.classifier = DecisionTreeClassifier()

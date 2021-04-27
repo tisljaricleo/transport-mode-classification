@@ -1,3 +1,5 @@
 .idea
 venv
 data/cellular_data.csv
+.vscode
+__pycache__
