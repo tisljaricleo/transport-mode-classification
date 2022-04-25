@@ -12,7 +12,11 @@ Data is not provided publicaly by default, but you can contact me with a request
 Run `python main.py` from `src` folder.
 
 ## How to cite
-Full paper with detailed explanation will be available soon! 
+Text:  
+L. Tišljarić, D. Cvetek, V. Vareškić and M. Gregurić, "Classification of Travel Modes from Cellular Network Data Using Machine Learning Algorithms," 2021 International Symposium ELMAR, 2021, pp. 173-177, doi: 10.1109/ELMAR52657.2021.9550817.
+
+.bib:  
+@INPROCEEDINGS{9550817,  author={Tišljarić, Leo and Cvetek, Dominik and Vareškić, Valentin and Gregurić, Martin},  booktitle={2021 International Symposium ELMAR},   title={Classification of Travel Modes from Cellular Network Data Using Machine Learning Algorithms},   year={2021},  volume={},  number={},  pages={173-177},  doi={10.1109/ELMAR52657.2021.9550817}}
 
 ## Contact and connect
 [Leo Tisljaric](https://www.linkedin.com/in/leo-ti%C5%A1ljari%C4%87-28a56b123/)
